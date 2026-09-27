@@ -10,7 +10,7 @@
 
 <br/>
 
-<img src="assets/h-tools.svg" width="100%" alt="01 // Tools I shipped"/>
+<img src="assets/h-tools.svg" width="100%" alt="01 // Projects I've worked on"/>
 
 <!-- tools:start -->
 <p align="center">

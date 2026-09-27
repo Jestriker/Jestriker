@@ -458,7 +458,7 @@ const out = {
   'stats.svg': stats(data),
   'shiplog.svg': shiplog(data),
   'footer.svg': footer(),
-  'h-tools.svg': header(1, 'TOOLS I SHIPPED'),
+  'h-tools.svg': header(1, "PROJECTS I'VE WORKED ON"),
   'h-stats.svg': header(2, 'BY THE NUMBERS', '#a78bfa'),
   'h-log.svg': header(3, 'SHIP LOG', '#38bdf8'),
   'h-stack.svg': header(4, 'LOADOUT', '#fbbf24'),
