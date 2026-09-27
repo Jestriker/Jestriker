@@ -8,6 +8,7 @@
     "location": "Israel",
     "since": "2019-11-01"
   },
+  "layout": ["about", "now", "projects", "liamos", "activity", "stats", "shiplog", "security", "stack", "contact", "guestbook"],
   "stack": ["ts", "react", "nextjs", "tailwind", "threejs", "nodejs", "python", "cloudflare", "arduino", "lua"],
   "tools": [
     {

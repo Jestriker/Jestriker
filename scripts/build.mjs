@@ -10,6 +10,8 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadSections, runData, renderAll, makeCache, picFactory, sectionNo } from './runtime.mjs';
+import * as lib from './lib.mjs';
 import { esc, pixelText, textWidth, sprite, SPRITES, identicon, rng, glyph } from './pixel.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -555,6 +557,10 @@ function replaceBlock(md, name, content) {
 // ───────────────────────────── main ─────────────────────────────
 
 const data = await loadGitHub();
+const cache = makeCache(ROOT);
+cache.set('github', data);
+const sections = await loadSections(ROOT);
+const sectionData = await runData(sections, { gh: lib.gh, getJSON: lib.getJSON, config, tools, now, ROOT, cache });
 mkdirSync(ASSETS, { recursive: true });
 rmSync(join(ASSETS, 'tools'), { recursive: true, force: true });
 mkdirSync(join(ASSETS, 'tools'), { recursive: true });
@@ -571,13 +577,20 @@ const out = {
   'h-stack.svg': header(4, 'LOADOUT', '#fbbf24'),
 };
 tools.forEach((t, i) => (out[`tools/${slug(t.name)}.svg`] = card(t, i)));
-for (const [f, s] of Object.entries(out)) writeFileSync(join(ASSETS, f), s);
+for (const [f, s] of Object.entries(renderAll(sections, { config, tools, now, data: { ...sectionData, github: data } }))) out[f] = s;
+for (const [f, s] of Object.entries(out)) { mkdirSync(dirname(join(ASSETS, f)), { recursive: true }); writeFileSync(join(ASSETS, f), s); }
 
 const readme = join(ROOT, 'README.md');
 if (existsSync(readme)) {
   let md = readFileSync(readme, 'utf8');
   md = replaceBlock(md, 'tools', toolsBlock());
   md = replaceBlock(md, 'stack', `<p align="center"><img src="https://skillicons.dev/icons?i=${config.stack.join(',')}&perline=10&theme=dark" alt="${config.stack.join(', ')}"/></p>`);
+  const pic = picFactory(ASSETS);
+  for (const m of sections) {
+    if (!m.readme) continue;
+    const ctx = { config, tools, now, data: { ...sectionData, github: data }, pic, C: lib.THEMES.dark, lib, no: sectionNo(config) };
+    md = replaceBlock(md, `section:${m.id}`, m.readme(ctx) ?? '');
+  }
   // Version every local image by its content so GitHub's image cache can never serve a stale card.
   md = md.replace(/src="(assets\/[^"?]+\.svg)(\?v=[0-9a-f]+)?"/g, (m, f) =>
     existsSync(join(ROOT, f)) ? `src="${f}?v=${createHash('sha1').update(readFileSync(join(ROOT, f))).digest('hex').slice(0, 8)}"` : m);

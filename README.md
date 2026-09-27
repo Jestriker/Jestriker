@@ -45,7 +45,7 @@
 
 <img src="assets/h-log.svg?v=808f75f2" width="100%" alt="03 // Ship log"/>
 
-<img src="assets/shiplog.svg?v=b020a5d5" width="100%" alt="Latest releases and pushes"/>
+<img src="assets/shiplog.svg?v=0e987441" width="100%" alt="Latest releases and pushes"/>
 
 <br/>
 
