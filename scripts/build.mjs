@@ -126,7 +126,7 @@ function hero(gh) {
     ['OK', 'Booting LiamOS kernel 6.9-plus'],
     ['OK', 'Mounting /dev/curiosity'],
     ['OK', 'Starting cybersec.target + netstack'],
-    ['OK', `Loading ${tools.length} published tools`],
+    ['OK', `Loading ${tools.length} projects`],
     ['OK', `Syncing ${gh.releases} releases from GitHub`],
     ['OK', 'Linking https://liam.plus'],
     ['WARN', 'Zombies detected near sector 7'],
@@ -188,14 +188,14 @@ function hero(gh) {
     <rect x="20" y="48" width="${W - 40}" height="12" fill="${C.panel}"/>
     <circle cx="46" cy="40" r="6" fill="#ff5f57"/><circle cx="66" cy="40" r="6" fill="#febc2e"/><circle cx="86" cy="40" r="6" fill="#28c840"/>
     <text x="${W / 2}" y="45" text-anchor="middle" font-family="${MONO}" font-size="13" fill="${C.muted}">liam@liamos: ~/profile</text>
-    <text x="${W - 44}" y="45" text-anchor="end" font-family="${MONO}" font-size="12" fill="${C.dim}">uptime ${gh.years}y · ${tools.length} tools online · built ${now.toISOString().slice(0, 10)}</text>
+    <text x="${W - 44}" y="45" text-anchor="end" font-family="${MONO}" font-size="12" fill="${C.dim}">uptime ${gh.years}y · ${tools.length} projects online · built ${now.toISOString().slice(0, 10)}</text>
     ${bootLines}
     <line x1="580" y1="84" x2="580" y2="${H - 44}" stroke="${C.line}" stroke-dasharray="2 6"/>
     <g class="pulse" filter="url(#glow${id})" opacity=".35">${pixelText(logo, lx, ly, scale, { fill: C.green })}</g>
     ${logoShadow}${logoMain}${logoHi}
     ${typed('role', role, roleX, tagY, { size: 16, fill: C.text, begin: tagStart, cursor: false })}
     ${typed('where', `${config.profile.location} · ${config.profile.site.replace('https://', '')}`, 600 + (540 - 30 * 13 * 0.6) / 2, tagY + 30, { size: 13, fill: C.muted, begin: tagStart + 1.2, cursor: false })}
-    ${typed('prompt', './explore --tools --no-zombies', 88, H - 58, { size: 15, fill: C.green, begin: logoStart + 0.6 })}
+    ${typed('prompt', './explore --projects --no-zombies', 88, H - 58, { size: 15, fill: C.green, begin: logoStart + 0.6 })}
     <text x="60" y="${H - 58}" font-family="${MONO}" font-size="15" fill="${C.muted}">$</text>
     ${liam}
     <g class="bubble"><rect x="1062" y="262" width="58" height="26" fill="#fff"/><rect x="1098" y="288" width="6" height="6" fill="#fff"/>
@@ -313,7 +313,7 @@ function card(t, i) {
 function stats(gh) {
   const W = 1200, H = 150;
   const items = [
-    ['TOOLS', tools.length],
+    ['PROJECTS', tools.length],
     ['RELEASES', gh.releases],
     ['DOWNLOADS', gh.downloads],
     ['YEARS', gh.years],
@@ -429,6 +429,111 @@ function footer() {
   return svg(W, H, body, 'Liam vs. Zombies — thanks for visiting');
 }
 
+// ───────────────────────────── AVATAR: the lightning block, alive ─────────────────────────────
+
+function avatar() {
+  const A = JSON.parse(readFileSync(join(ROOT, 'scripts', 'avatar.json'), 'utf8'));
+  const N = A.size, P = 14, W = N * P, SUB = P / 4;
+  const cells = (want) => {
+    const out = [];
+    A.kinds.forEach((row, y) => [...row].forEach((k, x) => want(k) && out.push([x, y])));
+    return out;
+  };
+  const rect = ([x, y], fill) => `<rect x="${x * P}" y="${y * P}" width="${P}" height="${P}" fill="${fill ?? A.palette[A.pixels[y][x]]}"/>`;
+  const bolt = cells((k) => k === 'B');
+  const top = bolt.reduce((a, b) => (b[1] < a[1] ? b : a));
+
+  // Pixel lightning on a 4x finer grid: midpoint displacement, then rasterised to squares.
+  const jag = (r, a, b, rough = 0.5, depth = 5) => {
+    let pts = [a, b];
+    for (let d = 0; d < depth; d++) {
+      const out = [pts[0]];
+      for (let i = 0; i < pts.length - 1; i++) {
+        const [p, q] = [pts[i], pts[i + 1]];
+        const L = Math.hypot(q[0] - p[0], q[1] - p[1]) || 1;
+        const off = (r() - 0.5) * L * rough;
+        out.push([(p[0] + q[0]) / 2 - ((q[1] - p[1]) / L) * off, (p[1] + q[1]) / 2 + ((q[0] - p[0]) / L) * off], q);
+      }
+      pts = out;
+    }
+    const set = new Set();
+    for (let i = 0; i < pts.length - 1; i++) {
+      const [[x0, y0], [x1, y1]] = [pts[i], pts[i + 1]];
+      const n = Math.ceil(Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0))) + 1;
+      for (let s = 0; s <= n; s++) set.add(`${Math.round(x0 + ((x1 - x0) * s) / n)},${Math.round(y0 + ((y1 - y0) * s) / n)}`);
+    }
+    return [...set].map((k) => k.split(',').map(Number));
+  };
+  const strike = (seed, from, to) => {
+    const r = rng(seed);
+    let pts = jag(r, from, to);
+    for (let b = 0; b < 3; b++) {
+      const o = pts[Math.floor(pts.length * (0.25 + r() * 0.5))];
+      pts = pts.concat(jag(r, o, [o[0] + (r() - 0.5) * 30, o[1] + 8 + r() * 16], 0.7, 3));
+    }
+    return pts.filter(([x, y]) => x >= 0 && y >= 0 && x < N * 4 && y < N * 4)
+      .map(([x, y]) => `<rect x="${x * SUB - SUB / 4}" y="${y * SUB - SUB / 4}" width="${SUB * 1.5}" height="${SUB * 1.5}"/>`).join('');
+  };
+  const tx = top[0] * 4 + 2, ty = top[1] * 4;
+  const hits = [
+    { d: strike('a', [tx + 34, -30], [tx, ty]), at: 0.30 },
+    { d: strike('b', [-30, N * 0.8], [bolt[20][0] * 4, bolt[20][1] * 4]), at: 0.72 },
+  ];
+  const T = 6; // seconds per loop
+  // discrete visibility window for a 2-frame strike + 1 afterimage at fraction `at`
+  const blink = (at, len = 0.025) => {
+    const k = [0, at, at + len, at + len * 1.6, at + len * 2.2, 1].map((v) => Math.min(1, v).toFixed(3));
+    return `<animate attributeName="opacity" values="0;1;0;.6;0;0" keyTimes="${k.join(';')}" dur="${T}s" repeatCount="indefinite" calcMode="discrete"/>`;
+  };
+  const arcs = [0, 1, 2, 3].map((k) => {
+    const r = rng(`arc${k}`);
+    const outl = cells((c) => c === 'K');
+    let [x, y] = outl[Math.floor(r() * outl.length)].map((v) => v * 4 + 2);
+    const pts = [];
+    let [dx, dy] = [[1, 0], [-1, 0], [0, 1], [0, -1]][k];
+    for (let i = 0; i < 9; i++) {
+      pts.push(`<rect x="${x * SUB}" y="${y * SUB}" width="${SUB}" height="${SUB}"/>`);
+      if (r() < 0.5) [dx, dy] = r() < 0.5 ? [dy, dx] : [-dy, -dx];
+      x += dx || (r() < 0.5 ? 1 : -1); y += dy || (r() < 0.5 ? 1 : -1);
+    }
+    return `<g opacity="0">${pts.join('')}<animate attributeName="opacity" values="0;1;0;1;0" keyTimes="0;.2;.4;.6;1" dur="${(0.5 + k * 0.17).toFixed(2)}s" begin="${(k * 0.4).toFixed(1)}s" repeatCount="indefinite" calcMode="discrete"/></g>`;
+  }).join('');
+
+  const flashAt = (at, a) => {
+    const k = [0, at, at + 0.02, at + 0.05, 1].map((v) => v.toFixed(3));
+    return `<rect width="${W}" height="${W}" fill="#fff8e0" opacity="0"><animate attributeName="opacity" values="0;${a};${a / 3};0;0" keyTimes="${k.join(';')}" dur="${T}s" repeatCount="indefinite"/></rect>`;
+  };
+
+  const body = `
+  <defs>
+    <clipPath id="av"><rect width="${W}" height="${W}" rx="${P * 2}"/></clipPath>
+    <clipPath id="bc">${bolt.map((c) => rect(c, '#000')).join('')}</clipPath>
+    <filter id="g1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${P * 1.3}"/></filter>
+    <filter id="g2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${P * 0.5}"/></filter>
+    <linearGradient id="sh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <style>
+    .glow{animation:glow 2.4s ease-in-out infinite}
+    @keyframes glow{0%,100%{opacity:.35}50%{opacity:.95}}
+    .sh{animation:sh 6s ease-in-out infinite}
+    @keyframes sh{0%,55%{transform:translateX(-${W}px)}75%,100%{transform:translateX(${W}px)}}
+  </style>
+  <g clip-path="url(#av)">
+    ${cells((k) => k === '.').map((c) => rect(c)).join('')}
+    <rect width="${W}" height="${W}" fill="#000" opacity=".15"/>
+    <g class="glow" filter="url(#g1)" fill="#ffc43c">${bolt.map((c) => rect(c, '#ffc43c')).join('')}</g>
+    ${cells((k) => k !== '.').map((c) => rect(c)).join('')}
+    <g clip-path="url(#bc)"><rect x="0" y="0" width="${W * 0.35}" height="${W}" fill="url(#sh)" transform="skewX(-20)" class="sh"/></g>
+    <g fill="#fff6d0" filter="url(#g2)" opacity=".9">${arcs}</g>
+    <g fill="#fffbe8">${arcs}</g>
+    ${hits.map((h) => flashAt(h.at, h.at < 0.5 ? 0.5 : 0.22)).join('')}
+    ${hits.map((h) => `<g opacity="0">${blink(h.at)}<g fill="#ffd45a" filter="url(#g2)">${h.d}</g><g fill="#fffff0">${h.d}</g></g>`).join('')}
+    <g opacity="0">${blink(hits[0].at, 0.06)}<g fill="#fff3b0" filter="url(#g1)">${bolt.map((c) => rect(c, '#fff3b0')).join('')}</g></g>
+  </g>
+  <rect x="1" y="1" width="${W - 2}" height="${W - 2}" rx="${P * 2}" fill="none" stroke="#ffc43c" stroke-opacity=".35" stroke-width="2"/>`;
+  return svg(W, W, body, 'Liam+ — the lightning block');
+}
+
 // ───────────────────────────── README ─────────────────────────────
 
 function toolsBlock() {
@@ -458,6 +563,7 @@ const out = {
   'stats.svg': stats(data),
   'shiplog.svg': shiplog(data),
   'footer.svg': footer(),
+  'avatar.svg': avatar(),
   'h-tools.svg': header(1, "PROJECTS I'VE WORKED ON"),
   'h-stats.svg': header(2, 'BY THE NUMBERS', '#a78bfa'),
   'h-log.svg': header(3, 'SHIP LOG', '#38bdf8'),

@@ -1,5 +1,9 @@
 <!-- Assets in /assets are regenerated daily by .github/workflows/build.yml — edit tools.json, not the SVGs. -->
 
+<p align="center">
+  <a href="https://liam.plus"><img src="assets/avatar.svg" width="150" alt="Liam+ — animated lightning block"/></a>
+</p>
+
 <a href="https://liam.plus"><img src="assets/hero.svg" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder"/></a>
 
 <p align="center">
