@@ -27,35 +27,123 @@
       "releasesRepo": "Jestriker/parpar-executor-releases"
     },
     {
-      "name": "JustPlugin",
-      "tagline": "TODO — fill in from liam.plus scan.",
+      "name": "TeGriAi",
+      "tagline": "The most Israeli place on the net — a Discord + YouTube community to play, chat and hang out.",
+      "url": "https://tegriai.com",
+      "tags": ["community", "discord", "youtube"],
+      "accent": "#6b70ff",
+      "sprite": {
+        "palette": { "a": "#02050c", "b": "#fbfbfb", "c": "#8a8b8f", "d": "#d0d1d2", "e": "#4e5055", "f": "#1b1e24", "g": "#6f7175", "h": "#aeafb1" },
+        "rows": ["aaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaa", "aafeeeeeggcgchfa", "aacbbbbdbbbdbbfa", "aadbbbddddbhbbfa", "aafgbcfbcddhbbfa", "aaahbegbgchhbbfa", "aaabbfhbgbbhbbfa", "aaebdabbbbddbbfa", "aaecefcccceggeaa", "aaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaa"]
+      }
+    },
+    {
+      "name": "Lumelyy",
+      "tagline": "Brand site & store for Lumelyy Smooth — premium at-home IPL hair reduction.",
+      "url": "https://lumelyy.com",
+      "tags": ["e-commerce", "brand", "web"],
+      "accent": "#c7a878",
+      "sprite": {
+        "palette": { "a": "#322a25", "b": "#a98b5f", "c": "#695742", "d": "#29221e", "e": "#251f1b", "f": "#907753", "g": "#453a2f", "h": "#7b6649" },
+        "rows": [
+        "..aaaaaaaaaaaaa.",
+        "aaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaada",
+        "aaaaaaaggaaaaadd",
+        "aaaaaaahcaaadddd",
+        "aaaaaaabfaaadddd",
+        "aaaaaafbbhaddddd",
+        "aaagcfbbbbfcaddd",
+        "aaagcfbbbbfcaddd",
+        "aaaaaahbbhaddddd",
+        "aaaaaaabfadddddd",
+        "aaaaaadccdddddde",
+        "aaaadddggdddddee",
+        "aaaadddddddddeee",
+        "aaddddddddddeeee",
+        ".ddddddddddeeee."
+      ]
+      }
+    },
+    {
+      "name": "Paint",
+      "tagline": "A paint app that runs right inside LiamOS — open it from the dock at liam.plus.",
       "url": "https://liam.plus",
+      "tags": ["web-app", "liamos", "creative"],
+      "accent": "#e8b06a",
+      "sprite": {
+        "palette": { "a": "#e7af6a", "b": "#b07c43", "c": "#853b8f", "d": "#f1be1b", "e": "#2f7d32", "f": "#1a66bd", "g": "#798895", "h": "#8c4d17" },
+        "rows": [
+        "................",
+        "................",
+        "......hhhh......",
+        "....baaadaabhh..",
+        "..hbbbadddaaah..",
+        "..babhbaddbebah.",
+        ".haaabaaaabebab.",
+        ".baccaaaaaagaah.",
+        ".baccbbaaaaffa..",
+        ".baabbbaaaaggb..",
+        "..aabbbaaaaab...",
+        "..haabbabhhh....",
+        "....bbbb........",
+        "................",
+        "................",
+        "................"
+      ]
+      }
+    },
+    {
+      "name": "JustPlugin",
+      "tagline": "TODO — needs *.liam.plus in the scan grant.",
+      "url": "https://justplugin.liam.plus",
       "tags": ["plugin"],
-      "accent": "#38bdf8",
+      "accent": "#ff6b00",
+      "sprite": {
+        "palette": { "a": "#482d1c", "b": "#fbd644", "c": "#96661b", "d": "#ee9726", "e": "#754d18", "f": "#c77d1e", "g": "#3b2516", "h": "#523421" },
+        "rows": ["gahaaaggggggaaag", "ahagaageffcagaha", "aaahhaafbbcgaaaa", "gahhagebbdhahaga", "aaaaahdbbcaaaaaa", "aaaaaebbfagggaaa", "ahaaedbbddfegaaa", "ahhhcbbbbdegahaa", "aahgggcbbfagagaa", "aaahaacbfaahhaaa", "gaahaebfhghhaaaa", "ahaghfdeghhaaaaa", "aahahfegaaahhaga", "aaaahegahhaaaaaa", "gggggaaaaaaaaaaa", "aaaagaaaagaaaaga"]
+      },
       "draft": true
     },
     {
       "name": "Liam vs. Zombies",
-      "tagline": "TODO — fill in from liam.plus scan.",
-      "url": "https://liam.plus",
+      "tagline": "TODO — needs *.liam.plus in the scan grant.",
+      "url": "https://zombies.liam.plus",
       "tags": ["game"],
-      "accent": "#ff3355",
+      "accent": "#84cc16",
+      "sprite": {
+        "palette": { "a": "#62a646", "b": "#3c6829", "c": "#0f1a0a", "d": "#57913d", "e": "#5d9c42", "f": "#355c24" },
+        "rows": ["deadadeadadeadad", "aaaaaaaaaaaaaaaa", "daedadaedadaedad", "addeaaddeaaddeaa", "eddaaeddaaeddaae", "deadadeadadeadad", "ccccaaaaaaaacccc", "ccccadaedadacccc", "addeaaffbbaddeaa", "eddaaeffbbeddaae", "deadbfbbfbfbadad", "aaaabbbbbbbbaaaa", "daedbfaedafbedad", "addebbddeabfdeaa", "eddaaeddaaeddaae", "deadadeadadeadad"]
+      },
       "draft": true
     },
     {
-      "name": "TeGriAi",
-      "tagline": "TODO — fill in from liam.plus scan.",
-      "url": "https://liam.plus",
-      "tags": ["ai"],
-      "accent": "#fbbf24",
-      "draft": true
-    },
-    {
-      "name": "Lumelyy",
-      "tagline": "TODO — fill in from liam.plus scan.",
-      "url": "https://liam.plus",
-      "tags": ["web"],
-      "accent": "#f472b6",
+      "name": "Tools",
+      "tagline": "TODO — needs *.liam.plus in the scan grant.",
+      "url": "https://tools.liam.plus",
+      "tags": ["utilities"],
+      "accent": "#38bdf8",
+      "sprite": {
+        "palette": { "a": "#2a364a", "b": "#3087b3", "c": "#b7c2ce", "d": "#68c8f4", "e": "#5d6878", "f": "#2f516b", "g": "#e2e8f0", "h": "#479fcb" },
+        "rows": [
+        "..aaaaaaaaaaaa..",
+        ".aaaaaaaaaaaaaa.",
+        "aaaaaaaaaaffaaaa",
+        "aaaaaaaafhhhbaaa",
+        "aaaaaaaacdbbhfaa",
+        "aaaaaaaegdbbhfaa",
+        "aaaaaaacgddhbaaa",
+        "aaaaaacgceffaaaa",
+        "aaaaacgcfaaaaaaa",
+        "aaaacgcaaaaaaaaa",
+        "aaacgcaaaaaaaaaa",
+        "aaaecaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaa",
+        ".aaaaaaaaaaaaaa.",
+        "..aaaaaaaaaaaa.."
+      ]
+      },
       "draft": true
     }
   ]

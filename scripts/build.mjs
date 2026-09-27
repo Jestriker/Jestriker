@@ -69,7 +69,7 @@ async function loadGitHub() {
       events.push({ when: r.published_at, kind: 'release', label: `${t.name} ${r.tag_name}` });
     }
   }
-  for (const r of repos.filter((r) => !r.fork && !tools.some((t) => t.releasesRepo?.endsWith(`/${r.name}`))).slice(0, 4)) {
+  for (const r of repos.filter((r) => !r.fork && r.name !== user && !tools.some((t) => t.releasesRepo?.endsWith(`/${r.name}`))).slice(0, 4)) {
     events.push({ when: r.pushed_at, kind: 'push', label: r.name });
   }
   for (const t of tools) if (!t.releasesRepo) events.push({ when: t.added ?? null, kind: 'online', label: `${t.name} → ${t.url.replace(/^https?:\/\//, '')}` });
@@ -241,13 +241,15 @@ function wrap(text, max) {
 function card(t, i) {
   const W = 580, H = 220, id = `c${i}`;
   const a = t.accent ?? C.green;
-  const rows = t.sprite ?? identicon(t.name);
-  const px = Math.floor(88 / rows.length);
+  // A sprite is either {palette, rows} (converted from the tool's real icon) or a generated identicon.
+  const rows = t.sprite?.rows ?? identicon(t.name);
+  const pal = t.sprite?.palette ?? { 1: a, 2: '#fff' };
+  const px = Math.floor(96 / rows.length);
   const ox = 24 + (120 - rows[0].length * px) / 2;
   const oy = 30 + (120 - rows.length * px) / 2;
   const icon = rows
-    .flatMap((row, y) => [...row].map((c, x) => (c === '.' ? '' :
-      `<rect x="${ox + x * px}" y="${oy + y * px}" width="${px}" height="${px}" fill="${c === '2' ? '#fff' : a}" class="ip" style="animation-delay:${(0.2 + (x + y) * 0.04).toFixed(2)}s"/>`)))
+    .flatMap((row, y) => [...row].map((c, x) => (!pal[c] ? '' :
+      `<rect x="${ox + x * px}" y="${oy + y * px}" width="${px}" height="${px}" fill="${pal[c]}" class="ip" style="animation-delay:${(0.2 + (x + y) * 0.025).toFixed(3)}s"/>`)))
     .join('');
 
   let nameScale = 3;
@@ -256,7 +258,7 @@ function card(t, i) {
 
   const status = t.live
     ? `${t.live.version} · shipped ${ago(t.live.when)}`
-    : t.draft ? 'coming soon' : 'live on liam.plus';
+    : t.draft ? 'coming soon' : `live · ${new URL(t.url).host}`;
   const lines = wrap(t.tagline ?? '', 44).slice(0, 3);
   const desc = lines.map((l, k) => `<text x="170" y="${108 + k * 22}" font-family="${MONO}" font-size="14.5" fill="${C.text}">${esc(l)}</text>`).join('');
 

@@ -17,6 +17,13 @@
   <a href="https://github.com/Jestriker/justmic-releases/releases/latest"><img src="assets/tools/justmic.svg" width="49%" alt="JustMic — Virtual microphone with a studio chain, soundboard and voice changer."/></a>
   <a href="https://github.com/Jestriker/parpar-executor-releases/releases/latest"><img src="assets/tools/parpar-executor.svg" width="49%" alt="Parpar Executor — Mission control for game servers."/></a>
 </p>
+<p align="center">
+  <a href="https://tegriai.com"><img src="assets/tools/tegriai.svg" width="49%" alt="TeGriAi — The most Israeli place on the net — a Discord + YouTube community to play, chat and hang out."/></a>
+  <a href="https://lumelyy.com"><img src="assets/tools/lumelyy.svg" width="49%" alt="Lumelyy — Brand site &amp; store for Lumelyy Smooth — premium at-home IPL hair reduction."/></a>
+</p>
+<p align="center">
+  <a href="https://liam.plus"><img src="assets/tools/paint.svg" width="49%" alt="Paint — A paint app that runs right inside LiamOS — open it from the dock at liam.plus."/></a>
+</p>
 <!-- tools:end -->
 
 <br/>
