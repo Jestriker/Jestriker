@@ -11,6 +11,18 @@
   "stack": ["ts", "react", "nextjs", "tailwind", "threejs", "nodejs", "python", "cloudflare", "arduino", "lua"],
   "tools": [
     {
+      "name": "JustPlugin",
+      "tagline": "The only essentials plugin you will ever need: 200+ commands, economy, teleports and moderation in one JAR. Native Folia.",
+      "url": "https://justplugin.liam.plus",
+      "tags": ["minecraft", "java", "folia"],
+      "accent": "#ff6b00",
+      "sprite": {
+        "palette": { "a": "#482d1c", "b": "#fbd644", "c": "#96661b", "d": "#ee9726", "e": "#754d18", "f": "#c77d1e", "g": "#3b2516", "h": "#523421" },
+        "rows": ["gahaaaggggggaaag", "ahagaageffcagaha", "aaahhaafbbcgaaaa", "gahhagebbdhahaga", "aaaaahdbbcaaaaaa", "aaaaaebbfagggaaa", "ahaaedbbddfegaaa", "ahhhcbbbbdegahaa", "aahgggcbbfagagaa", "aaahaacbfaahhaaa", "gaahaebfhghhaaaa", "ahaghfdeghhaaaaa", "aahahfegaaahhaga", "aaaahegahhaaaaaa", "gggggaaaaaaaaaaa", "aaaagaaaagaaaaga"]
+      },
+      "status": "v1.3 · Paper / Purpur / Folia"
+    },
+    {
       "name": "JustMic",
       "tagline": "Virtual microphone with a studio chain, soundboard and voice changer.",
       "url": "https://github.com/Jestriker/justmic-releases/releases/latest",
@@ -25,6 +37,45 @@
       "tags": ["desktop", "devops", "gaming"],
       "accent": "#a78bfa",
       "releasesRepo": "Jestriker/parpar-executor-releases"
+    },
+    {
+      "name": "Liam's Tools",
+      "tagline": "One place for all the little utilities: security checks, digital footprint, password tools, converters and secure note sharing.",
+      "url": "https://tools.liam.plus",
+      "tags": ["security", "utilities", "web"],
+      "accent": "#38bdf8",
+      "sprite": {
+        "palette": { "a": "#2a364a", "b": "#3087b3", "c": "#b7c2ce", "d": "#68c8f4", "e": "#5d6878", "f": "#2f516b", "g": "#e2e8f0", "h": "#479fcb" },
+        "rows": [
+        "..aaaaaaaaaaaa..",
+        ".aaaaaaaaaaaaaa.",
+        "aaaaaaaaaaffaaaa",
+        "aaaaaaaafhhhbaaa",
+        "aaaaaaaacdbbhfaa",
+        "aaaaaaaegdbbhfaa",
+        "aaaaaaacgddhbaaa",
+        "aaaaaacgceffaaaa",
+        "aaaaacgcfaaaaaaa",
+        "aaaacgcaaaaaaaaa",
+        "aaacgcaaaaaaaaaa",
+        "aaaecaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaa",
+        ".aaaaaaaaaaaaaa.",
+        "..aaaaaaaaaaaa.."
+      ]
+      }
+    },
+    {
+      "name": "Liam vs. Zombies",
+      "tagline": "Browser survival game: WASD to move, Space to fight, and see how long Liam survives the horde.",
+      "url": "https://zombies.liam.plus",
+      "tags": ["game", "browser", "arcade"],
+      "accent": "#84cc16",
+      "sprite": {
+        "palette": { "a": "#62a646", "b": "#3c6829", "c": "#0f1a0a", "d": "#57913d", "e": "#5d9c42", "f": "#355c24" },
+        "rows": ["deadadeadadeadad", "aaaaaaaaaaaaaaaa", "daedadaedadaedad", "addeaaddeaaddeaa", "eddaaeddaaeddaae", "deadadeadadeadad", "ccccaaaaaaaacccc", "ccccadaedadacccc", "addeaaffbbaddeaa", "eddaaeffbbeddaae", "deadbfbbfbfbadad", "aaaabbbbbbbbaaaa", "daedbfaedafbedad", "addebbddeabfdeaa", "eddaaeddaaeddaae", "deadadeadadeadad"]
+      }
     },
     {
       "name": "TeGriAi",
@@ -92,59 +143,6 @@
         "................"
       ]
       }
-    },
-    {
-      "name": "JustPlugin",
-      "tagline": "TODO — needs *.liam.plus in the scan grant.",
-      "url": "https://justplugin.liam.plus",
-      "tags": ["plugin"],
-      "accent": "#ff6b00",
-      "sprite": {
-        "palette": { "a": "#482d1c", "b": "#fbd644", "c": "#96661b", "d": "#ee9726", "e": "#754d18", "f": "#c77d1e", "g": "#3b2516", "h": "#523421" },
-        "rows": ["gahaaaggggggaaag", "ahagaageffcagaha", "aaahhaafbbcgaaaa", "gahhagebbdhahaga", "aaaaahdbbcaaaaaa", "aaaaaebbfagggaaa", "ahaaedbbddfegaaa", "ahhhcbbbbdegahaa", "aahgggcbbfagagaa", "aaahaacbfaahhaaa", "gaahaebfhghhaaaa", "ahaghfdeghhaaaaa", "aahahfegaaahhaga", "aaaahegahhaaaaaa", "gggggaaaaaaaaaaa", "aaaagaaaagaaaaga"]
-      },
-      "draft": true
-    },
-    {
-      "name": "Liam vs. Zombies",
-      "tagline": "TODO — needs *.liam.plus in the scan grant.",
-      "url": "https://zombies.liam.plus",
-      "tags": ["game"],
-      "accent": "#84cc16",
-      "sprite": {
-        "palette": { "a": "#62a646", "b": "#3c6829", "c": "#0f1a0a", "d": "#57913d", "e": "#5d9c42", "f": "#355c24" },
-        "rows": ["deadadeadadeadad", "aaaaaaaaaaaaaaaa", "daedadaedadaedad", "addeaaddeaaddeaa", "eddaaeddaaeddaae", "deadadeadadeadad", "ccccaaaaaaaacccc", "ccccadaedadacccc", "addeaaffbbaddeaa", "eddaaeffbbeddaae", "deadbfbbfbfbadad", "aaaabbbbbbbbaaaa", "daedbfaedafbedad", "addebbddeabfdeaa", "eddaaeddaaeddaae", "deadadeadadeadad"]
-      },
-      "draft": true
-    },
-    {
-      "name": "Tools",
-      "tagline": "TODO — needs *.liam.plus in the scan grant.",
-      "url": "https://tools.liam.plus",
-      "tags": ["utilities"],
-      "accent": "#38bdf8",
-      "sprite": {
-        "palette": { "a": "#2a364a", "b": "#3087b3", "c": "#b7c2ce", "d": "#68c8f4", "e": "#5d6878", "f": "#2f516b", "g": "#e2e8f0", "h": "#479fcb" },
-        "rows": [
-        "..aaaaaaaaaaaa..",
-        ".aaaaaaaaaaaaaa.",
-        "aaaaaaaaaaffaaaa",
-        "aaaaaaaafhhhbaaa",
-        "aaaaaaaacdbbhfaa",
-        "aaaaaaaegdbbhfaa",
-        "aaaaaaacgddhbaaa",
-        "aaaaaacgceffaaaa",
-        "aaaaacgcfaaaaaaa",
-        "aaaacgcaaaaaaaaa",
-        "aaacgcaaaaaaaaaa",
-        "aaaecaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaa",
-        "aaaaaaaaaaaaaaaa",
-        ".aaaaaaaaaaaaaa.",
-        "..aaaaaaaaaaaa.."
-      ]
-      },
-      "draft": true
     }
   ]
 }

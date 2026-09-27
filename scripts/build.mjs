@@ -258,7 +258,7 @@ function card(t, i) {
 
   const status = t.live
     ? `${t.live.version} · shipped ${ago(t.live.when)}`
-    : t.draft ? 'coming soon' : `live · ${new URL(t.url).host}`;
+    : t.status ?? (t.draft ? 'coming soon' : `live · ${new URL(t.url).host}`);
   const lines = wrap(t.tagline ?? '', 44).slice(0, 3);
   const desc = lines.map((l, k) => `<text x="170" y="${108 + k * 22}" font-family="${MONO}" font-size="14.5" fill="${C.text}">${esc(l)}</text>`).join('');
 
