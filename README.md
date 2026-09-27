@@ -2,6 +2,7 @@
 
 <p align="center">
   <a href="https://liam.plus"><img src="assets/avatar.svg" width="150" alt="Liam+ — animated lightning block"/></a>
+  <br/><sub><a href="pfp/">⚡ grab the PFP pack</a></sub>
 </p>
 
 <a href="https://liam.plus"><img src="assets/hero.svg" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder"/></a>
