@@ -7,6 +7,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, pixelText, textWidth, sprite, SPRITES, identicon, rng, glyph } from './pixel.mjs';
@@ -577,6 +578,9 @@ if (existsSync(readme)) {
   let md = readFileSync(readme, 'utf8');
   md = replaceBlock(md, 'tools', toolsBlock());
   md = replaceBlock(md, 'stack', `<p align="center"><img src="https://skillicons.dev/icons?i=${config.stack.join(',')}&perline=10&theme=dark" alt="${config.stack.join(', ')}"/></p>`);
+  // Version every local image by its content so GitHub's image cache can never serve a stale card.
+  md = md.replace(/src="(assets\/[^"?]+\.svg)(\?v=[0-9a-f]+)?"/g, (m, f) =>
+    existsSync(join(ROOT, f)) ? `src="${f}?v=${createHash('sha1').update(readFileSync(join(ROOT, f))).digest('hex').slice(0, 8)}"` : m);
   writeFileSync(readme, md);
 }
 console.log(`built ${Object.keys(out).length} svgs · ${tools.length} tools · ${data.releases} releases · ${data.events.length} log lines`);
