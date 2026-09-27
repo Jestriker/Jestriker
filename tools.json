@@ -1,0 +1,62 @@
+{
+  "profile": {
+    "github": "Jestriker",
+    "name": "Liam Abu",
+    "handle": "liam+",
+    "site": "https://liam.plus",
+    "role": "Cyber Security · Networking · Tool Builder",
+    "location": "Israel",
+    "since": "2019-11-01"
+  },
+  "stack": ["ts", "react", "nextjs", "tailwind", "threejs", "nodejs", "python", "cloudflare", "arduino", "lua"],
+  "tools": [
+    {
+      "name": "JustMic",
+      "tagline": "Virtual microphone with a studio chain, soundboard and voice changer.",
+      "url": "https://github.com/Jestriker/justmic-releases/releases/latest",
+      "tags": ["desktop", "audio", "dsp"],
+      "accent": "#22ff88",
+      "releasesRepo": "Jestriker/justmic-releases"
+    },
+    {
+      "name": "Parpar Executor",
+      "tagline": "Mission control for game servers.",
+      "url": "https://github.com/Jestriker/parpar-executor-releases/releases/latest",
+      "tags": ["desktop", "devops", "gaming"],
+      "accent": "#a78bfa",
+      "releasesRepo": "Jestriker/parpar-executor-releases"
+    },
+    {
+      "name": "JustPlugin",
+      "tagline": "TODO — fill in from liam.plus scan.",
+      "url": "https://liam.plus",
+      "tags": ["plugin"],
+      "accent": "#38bdf8",
+      "draft": true
+    },
+    {
+      "name": "Liam vs. Zombies",
+      "tagline": "TODO — fill in from liam.plus scan.",
+      "url": "https://liam.plus",
+      "tags": ["game"],
+      "accent": "#ff3355",
+      "draft": true
+    },
+    {
+      "name": "TeGriAi",
+      "tagline": "TODO — fill in from liam.plus scan.",
+      "url": "https://liam.plus",
+      "tags": ["ai"],
+      "accent": "#fbbf24",
+      "draft": true
+    },
+    {
+      "name": "Lumelyy",
+      "tagline": "TODO — fill in from liam.plus scan.",
+      "url": "https://liam.plus",
+      "tags": ["web"],
+      "accent": "#f472b6",
+      "draft": true
+    }
+  ]
+}
