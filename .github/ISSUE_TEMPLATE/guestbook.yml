@@ -1,0 +1,25 @@
+name: ✍️ Sign the guestbook
+description: Leave a short message on Liam's profile high-score board.
+title: "✍️ Guestbook: "
+labels: ["guestbook"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **INSERT COIN** 🕹️ — your message shows up on the guestbook board on [my profile](https://github.com/Jestriker) after the next rebuild.
+        Keep it short and friendly. Links, @mentions and markdown are stripped. The newest 6 entries are shown.
+  - type: input
+    id: message
+    attributes:
+      label: Message
+      description: Max ~60 characters (anything longer is cut off). Plain text only.
+      placeholder: "Nice profile! Liam vs. Zombies when?"
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Public display
+      options:
+        - label: I understand my GitHub username, this message and the date will be shown publicly on the profile README.
+          required: true
