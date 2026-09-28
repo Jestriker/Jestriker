@@ -1,4 +1,5 @@
-// 3D pixel-art activity chart: the last 53 weeks of commits as an isometric voxel city.
+// 3D pixel-art activity chart: the last 26 weeks (~6 months) of commits as an isometric voxel city,
+// with the full year as a small GitHub-style strip that outlines the enlarged window.
 // Data: real per-day commit counts (see _activity-data.mjs). Heights use a log curve so light days
 // still read as buildings and busy days tower; colours use 5 GitHub-style intensity levels.
 
@@ -17,29 +18,29 @@ const DAY = 864e5;
 const iso = (t) => new Date(t).toISOString().slice(0, 10);
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-function summarize(act, now) {
+function summarize(act, now, weeks = 26) {
   const days = act?.days ?? {};
   const today = ilDay(now);
   const t0 = Date.parse(`${today}T00:00:00Z`);
   const dow = new Date(t0).getUTCDay();
-  const start = t0 - (dow + 52 * 7) * DAY;               // Sunday, 52 weeks before this week's Sunday
+  const start = t0 - (dow + (weeks - 1) * 7) * DAY;      // Sunday, (weeks-1) weeks before this week's Sunday
   const cells = [];
-  for (let w = 0; w < 53; w++)
+  for (let w = 0; w < weeks; w++)
     for (let d = 0; d < 7; d++) {
       const t = start + (w * 7 + d) * DAY;
       if (t > t0) continue;
       const date = iso(t);
       cells.push({ w, d, date, n: +days[date] || 0 });
     }
-  // "last year" = the last 365 days, like GitHub's headline.
-  const yearFrom = iso(t0 - 364 * DAY);
+  // Full year = the last 365 days, like GitHub's headline; shorter windows count every cell shown.
+  const yearFrom = weeks >= 53 ? iso(t0 - 364 * DAY) : iso(start);
   const year = cells.filter((c) => c.date >= yearFrom);
   const total = year.reduce((s, c) => s + c.n, 0);
   const active = year.filter((c) => c.n > 0).length;
   let longest = 0, run = 0;
   for (const c of year) { run = c.n > 0 ? run + 1 : 0; longest = Math.max(longest, run); }
   const busiest = year.reduce((b, c) => (c.n > (b?.n ?? 0) ? c : b), null);
-  return { cells, total, active, longest, busiest, today, empty: total === 0 };
+  return { cells, total, active, longest, busiest, today, weeks, empty: total === 0 };
 }
 
 // ───────────────────────── pixel helpers ─────────────────────────
@@ -102,10 +103,12 @@ const SHADES = {
 
 export function render(ctx) {
   const { C, lib } = ctx;
-  const S = summarize(ctx.data?.activity, ctx.now ?? new Date());
+  const S = summarize(ctx.data?.activity, ctx.now ?? new Date(), 26);
+  const Y = summarize(ctx.data?.activity, ctx.now ?? new Date(), 53);
+  const NW = S.weeks;
   const dark = C.name === 'dark';
   const P = SHADES[dark ? 'dark' : 'light'];
-  const W = 1200, H = 392;
+  const W = 1200, H = 420;
   const OX = 184, OY = 338;                 // screen position of ground corner (week 0, front row)
   const E1 = [16, -4], E2 = [-10, -5];      // one week / one day step
   const HMAX = 84, HMIN = 8;
@@ -155,10 +158,19 @@ export function render(ctx) {
   }
 
   // Diorama base: platform with a street in front, where Liam walks.
-  const U0 = -0.7, U1 = 53.5, V0 = -2.6, V1 = 7.3, TH = 8;
+  const U0 = -0.7, U1 = NW + 0.5, V0 = -2.6, V1 = 7.3, TH = 8;
   const corner = (u, v) => pt(u, v).map(r1);
   const [p00, p10, p11, p01] = [corner(U0, V0), corner(U1, V0), corner(U1, V1), corner(U0, V1)];
   const poly = (pts) => `M${pts.map((p) => p.join(' ')).join('L')}z`;
+
+  // Fit the whole diorama (base, towers, beacon, month labels) into the left part of the card, scaled up.
+  const xs = [p00, p10, p11, p01].map((p) => p[0]), ys = [p00, p10, p11, p01].map((p) => p[1]);
+  const LB = { x0: Math.min(...xs) - 16, x1: Math.max(...xs) + 16, y0: Math.min(...ys) - HMAX - 44, y1: Math.max(...ys) + TH + 24 };
+  const box = { x0: 20, y0: 96, x1: 770, y1: H - 14 };
+  const fs = Math.min((box.x1 - box.x0) / (LB.x1 - LB.x0), (box.y1 - box.y0) / (LB.y1 - LB.y0));
+  const FT = { s: r1(fs * 100) / 100, tx: 0, ty: 0 };
+  FT.tx = r1(box.x0 + ((box.x1 - box.x0) - (LB.x1 - LB.x0) * FT.s) / 2 - LB.x0 * FT.s);
+  FT.ty = r1(box.y1 - LB.y1 * FT.s);
   const platform =
     `<path fill="${C.panel}" stroke="${C.line}" d="${poly([p00, p10, p11, p01])}"/>` +
     `<path fill="${C.line}" d="${poly([p00, p10, [p10[0], p10[1] + TH], [p00[0], p00[1] + TH]])}"/>` +
@@ -169,9 +181,9 @@ export function render(ctx) {
   // Month labels along the front edge of the base.
   let months = '';
   let prev = -1;
-  for (let w = 0; w < 53; w++) {
+  for (let w = 0; w < NW; w++) {
     const m = +S.cells.find((c) => c.w === w)?.date.slice(5, 7) - 1;
-    if (m !== prev && w > 0 && w < 52) {
+    if (m !== prev && w > 0 && w < NW - 1) {
       const [x, y] = pt(w + 0.1, V0);
       months += textPath(lib.glyph, MONTHS[m], Math.round(x), Math.round(y + TH + 6), 2);
     }
@@ -181,7 +193,7 @@ export function render(ctx) {
   // Scan beam sweeping along the weeks (synced with a brightness wave on the roofs).
   const beamH = 150;
   const [b0, b1] = [pt(0, V0 + 0.3), pt(0, V1 - 0.2)].map((p) => p.map(r1));
-  const sweep = pt(53, 0).map((v, i) => r1(v - [OX, OY][i]));
+  const sweep = pt(NW, 0).map((v, i) => r1(v - [OX, OY][i]));
   const beam = `<g class="beam">
     <path fill="url(#abeam)" d="M${b0[0]} ${b0[1]}L${b1[0]} ${b1[1]}l0 ${-beamH}L${b0[0]} ${b0[1] - beamH}z"/>
     <path stroke="${C.green}" stroke-width="2" d="M${b0[0]} ${b0[1]}L${b1[0]} ${b1[1]}"/></g>`;
@@ -190,7 +202,7 @@ export function render(ctx) {
   let today = '';
   if (todayTop) {
     const { ax, ay, h } = todayTop;
-    const bx = ax + 1, by = ay - h - 4, top = 18;
+    const bx = ax + 1, by = ay - h - 4, top = Math.round(LB.y0 + 8);
     today = `<path class="pulse" fill="${C.ink}" d="M${ax} ${ay - h}l12 -3l-8 -4l-12 3z"/>
       <g class="beacon"><rect x="${bx - 3}" y="${top}" width="8" height="${by - top}" fill="url(#abeacon)" opacity=".35"/>
       <rect x="${bx}" y="${top}" width="2" height="${by - top}" fill="url(#abeacon)"/></g>
@@ -200,7 +212,7 @@ export function render(ctx) {
 
   // Liam walking the street, a zombie shambling after him.
   const SP = { K: dark ? '#0b0f0c' : '#1a2420', H: '#1f2937', S: '#f1c9a5', G: C.green, B: dark ? '#16a34a' : '#15803d', P: '#334155', Z: '#7fae6a', R: '#ff3355', T: '#5b4a3a' };
-  const walkFrom = pt(-1.5, -1.28).map(r1), walkTo = pt(54.5, -1.28).map(r1);
+  const walkFrom = pt(-1.5, -1.28).map(r1), walkTo = pt(NW + 1.5, -1.28).map(r1);
   const walker = (a, b, cls) => `<g class="${cls}"><g class="fa">${spritePaths(lib.SPRITES[a], -12, -30, 2, SP)}</g><g class="fb">${spritePaths(lib.SPRITES[b], -12, -30, 2, SP)}</g></g>`;
   const walkers = `${walker('zombieA', 'zombieB', 'walk z')}${walker('liamA', 'liamB', 'walk')}`;
 
@@ -212,7 +224,7 @@ export function render(ctx) {
   const title = `<g class="in">
     <path fill="${C.green}"${dark ? ' filter="url(#aglow)"' : ''} d="${textPath(lib.glyph, num, 40, 36, titleS)}"/>
     <path fill="${ink}" d="${textPath(lib.glyph, 'COMMITS', 40 + numW + 20, 36, titleS)}"/>
-    <path fill="${C.muted}" d="${textPath(lib.glyph, 'IN THE LAST YEAR', 42, 36 + 7 * titleS + 14, 2)}"/></g>`;
+    <path fill="${C.muted}" d="${textPath(lib.glyph, 'IN THE LAST 6 MONTHS', 42, 36 + 7 * titleS + 14, 2)}"/></g>`;
 
   const busy = S.busiest ? `${MONTHS[+S.busiest.date.slice(5, 7) - 1]} ${+S.busiest.date.slice(8, 10)}` : '—';
   const stats = [
@@ -220,7 +232,7 @@ export function render(ctx) {
     ['LONGEST STREAK', String(S.longest), S.longest === 1 ? 'DAY' : 'DAYS'],
     ['BUSIEST DAY', String(S.busiest?.n ?? 0), busy],
   ];
-  const sx = 800, sy = 244, sw = 128;
+  const sx = 800, sy = 250, sw = 128;
   const statBlock = stats.map(([label, value, unit], k) => {
     const x = sx + k * sw;
     return `<g class="in" style="animation-delay:${(2.2 + k * 0.15).toFixed(2)}s">
@@ -229,6 +241,21 @@ export function render(ctx) {
       ${unit ? `<text x="${x + lib.textWidth(value, 4) + 6}" y="${sy + 36}" font-family="${ctx.MONO}" font-size="11" fill="${C.muted}">${lib.esc(unit)}</text>` : ''}
       <text x="${x}" y="${sy + 62}" font-family="${ctx.MONO}" font-size="11" letter-spacing="1.5" fill="${C.muted}">${lib.esc(label)}</text></g>`;
   }).join('');
+
+  // Full year as a flat GitHub-style strip; the enlarged 6-month window is outlined.
+  const ynz = Y.cells.filter((c) => c.n > 0).map((c) => c.n).sort((a, b) => a - b);
+  const yq = (p) => ynz.length ? ynz[Math.min(ynz.length - 1, Math.floor(p * ynz.length))] : 1;
+  const [y1q, y2q, y3q] = [yq(0.25), yq(0.5), yq(0.75)];
+  const ylevel = (n) => (n <= 0 ? 0 : n <= y1q ? 1 : n <= y2q ? 2 : n <= y3q ? 3 : 4);
+  const gx = 800, gy = 128, pitch = 7;
+  const byLevel = [[], [], [], [], []];
+  for (const c of Y.cells) byLevel[ylevel(c.n)].push(`M${gx + c.w * pitch} ${gy + c.d * pitch}h5v5h-5z`);
+  const hlX = gx + (53 - NW) * pitch - 3;
+  const strip = `<g class="in" style="animation-delay:1.8s">
+    <text x="${gx}" y="${gy - 12}" font-family="${ctx.MONO}" font-size="11" letter-spacing="1.5" fill="${C.muted}">FULL YEAR · ${Y.total} COMMITS · ${Y.active} ACTIVE DAYS</text>
+    <g shape-rendering="crispEdges">${byLevel.map((d, L) => (d.length ? `<path class="t${L}" d="${d.join('')}"/>` : '')).join('')}</g>
+    <rect class="hl" x="${hlX}" y="${gy - 3}" width="${NW * pitch + 3}" height="${7 * pitch + 3}" rx="2" fill="none" stroke="${C.green}" stroke-width="1.5"/>
+    <text x="${hlX + NW * pitch + 2}" y="${gy + 7 * pitch + 16}" text-anchor="end" font-family="${ctx.MONO}" font-size="10" letter-spacing="1" fill="${C.green}">▲ SHOWN ABOVE: LAST 6 MONTHS</text></g>`;
 
   // Legend: less → more, as tiny voxels.
   const legend = `<g class="in" style="animation-delay:2.6s">
@@ -240,10 +267,10 @@ export function render(ctx) {
     <text x="${sx + 50 + 5 * 20 - 2}" y="${H - 22}" font-family="${ctx.MONO}" font-size="11" letter-spacing="1.5" fill="${C.muted}">MORE</text></g>`;
 
   // Timings.
-  const riseAt = 0.3, perWeek = 0.035;
-  const scanAt = riseAt + 53 * perWeek + 1.2, scanDur = 2.4, cycle = 8;
-  const wk = Array.from({ length: 53 }, (_, w) =>
-    `.w${w}{animation-delay:${(riseAt + w * perWeek).toFixed(3)}s,${(scanAt + (w / 53) * scanDur).toFixed(3)}s}`).join('');
+  const riseAt = 0.3, perWeek = 0.06;
+  const scanAt = riseAt + NW * perWeek + 1.2, scanDur = 2.4, cycle = 8;
+  const wk = Array.from({ length: NW }, (_, w) =>
+    `.w${w}{animation-delay:${(riseAt + w * perWeek).toFixed(3)}s,${(scanAt + (w / NW) * scanDur).toFixed(3)}s}`).join('');
   const pct = (s) => ((s / cycle) * 100).toFixed(2);
   const levelCss = P.map(([t, f, l], L) => `.t${L}{fill:${t}}.f${L}{fill:${f}}.l${L}{fill:${l}}`).join('');
 
@@ -255,12 +282,12 @@ export function render(ctx) {
     ${wk}
     .beam{opacity:0;animation:beam ${cycle}s linear ${scanAt.toFixed(2)}s infinite}
     @keyframes beam{0%{opacity:0;transform:translate(0,0)}2%{opacity:1}${pct(scanDur - 0.1)}%{opacity:1}${pct(scanDur)}%{opacity:0;transform:translate(${sweep[0]}px,${sweep[1]}px)}100%{opacity:0;transform:translate(${sweep[0]}px,${sweep[1]}px)}}
-    .pulse{animation:pulse 1.4s ease-in-out ${(riseAt + 53 * perWeek + 0.6).toFixed(2)}s infinite both;opacity:0}
+    .pulse{animation:pulse 1.4s ease-in-out ${(riseAt + NW * perWeek + 0.6).toFixed(2)}s infinite both;opacity:0}
     @keyframes pulse{0%,100%{opacity:0}50%{opacity:${dark ? 0.75 : 0.6}}}
-    .beacon{transform-box:fill-box;transform-origin:50% 100%;animation:grow .6s ease-out ${(riseAt + 53 * perWeek + 0.5).toFixed(2)}s both,beacon 1.4s ease-in-out ${(riseAt + 53 * perWeek + 1.1).toFixed(2)}s infinite}
+    .beacon{transform-box:fill-box;transform-origin:50% 100%;animation:grow .6s ease-out ${(riseAt + NW * perWeek + 0.5).toFixed(2)}s both,beacon 1.4s ease-in-out ${(riseAt + NW * perWeek + 1.1).toFixed(2)}s infinite}
     @keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
     @keyframes beacon{0%,100%{opacity:1}50%{opacity:.45}}
-    .tag{opacity:0;animation:in .3s ease-out ${(riseAt + 53 * perWeek + 1).toFixed(2)}s forwards}
+    .tag{opacity:0;animation:in .3s ease-out ${(riseAt + NW * perWeek + 1).toFixed(2)}s forwards}
     .in{opacity:0;animation:in .5s ease-out .2s forwards}
     @keyframes in{from{opacity:0}to{opacity:1}}
     .walk{animation:walk 30s linear 2.5s infinite both}
@@ -269,6 +296,8 @@ export function render(ctx) {
     .fa{animation:fa .5s steps(1) infinite}.fb{animation:fb .5s steps(1) infinite}
     .z .fa,.z .fb{animation-duration:.8s}
     @keyframes fa{50%{opacity:0}}@keyframes fb{0%{opacity:0}50%{opacity:1}}
+    .hl{animation:hl 2.4s ease-in-out infinite}
+    @keyframes hl{0%,100%{stroke-opacity:1}50%{stroke-opacity:.35}}
     .road{animation:road 1.2s linear infinite}
     @keyframes road{to{stroke-dashoffset:-12}}`;
 
@@ -286,12 +315,15 @@ export function render(ctx) {
     <rect width="${W}" height="${H}" fill="${C.bg}"/>
     <rect width="${W}" height="${H}" fill="url(#agrid)"/>
     ${title}
+    <g transform="translate(${FT.tx} ${FT.ty}) scale(${FT.s})">
     ${platform}
     <path fill="${C.muted}" fill-opacity=".8" d="${months}"/>
     <g shape-rendering="crispEdges">${city}</g>
     ${today}
     ${beam}
     ${walkers}
+    </g>
+    ${strip}
     ${statBlock}
     ${legend}
     ${lib.crtOverlay(C, id, W, H)}
@@ -299,8 +331,8 @@ export function render(ctx) {
   <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="16" fill="none" stroke="${C.line}"/>`;
 
   const label = S.empty
-    ? 'Commit activity over the last year'
-    : `${S.total} commits in the last year · ${S.active} active days · longest streak ${S.longest} days · busiest day ${S.busiest?.n ?? 0} commits`;
+    ? 'Commit activity over the last 6 months'
+    : `${S.total} commits in the last 6 months (${Y.total} in the full year) · ${S.active} active days · longest streak ${S.longest} days · busiest day ${S.busiest?.n ?? 0} commits`;
   return {
     'activity.svg': lib.svg(W, H, body, label),
     'h-activity.svg': lib.header(C, ctx.no('activity'), 'ACTIVITY', C.green),
@@ -308,8 +340,9 @@ export function render(ctx) {
 }
 
 export function readme(ctx) {
-  const S = summarize(ctx.data?.activity, ctx.now ?? new Date());
-  const alt = S.empty ? 'Commit activity over the last year'
-    : `${S.total} commits in the last year across ${S.active} active days, rendered as a 3D pixel-art city`;
+  const S = summarize(ctx.data?.activity, ctx.now ?? new Date(), 26);
+  const Y = summarize(ctx.data?.activity, ctx.now ?? new Date(), 53);
+  const alt = S.empty ? 'Commit activity over the last 6 months'
+    : `${S.total} commits in the last 6 months across ${S.active} active days (${Y.total} in the full year), rendered as a 3D pixel-art city`;
   return `${ctx.pic('h-activity.svg', 'width="100%" alt="Activity"')}\n\n<p align="center">${ctx.pic('activity.svg', `width="100%" alt="${alt}"`)}</p>`;
 }

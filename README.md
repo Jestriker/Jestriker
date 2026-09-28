@@ -2,7 +2,7 @@
      Edit tools.json or scripts/sections/*, not the blocks below. -->
 
 <!-- section:hero:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=bae90634"/><img src="assets/hero.svg?v=cb322b96" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=cbe7fac3"/><img src="assets/hero.svg?v=16f23045" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
 <!-- section:hero:end -->
 
 <!-- section:badges:start -->
@@ -66,7 +66,7 @@
 <!-- section:activity:start -->
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/h-activity-light.svg?v=1ccfe267"/><img src="assets/h-activity.svg?v=f9d83384" width="100%" alt="Activity"/></picture>
 
-<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=43391b32"/><img src="assets/activity.svg?v=264af6e7" width="100%" alt="909 commits in the last year across 98 active days, rendered as a 3D pixel-art city"/></picture></p>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=97f5f445"/><img src="assets/activity.svg?v=fcc8ad77" width="100%" alt="857 commits in the last 6 months across 74 active days (912 in the full year), rendered as a 3D pixel-art city"/></picture></p>
 <!-- section:activity:end -->
 
 <br/>
@@ -118,5 +118,5 @@
 <!-- section:visitors:end -->
 
 <!-- section:footer:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=affdfb78"/><img src="assets/footer.svg?v=ee230ff7" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=ae19b506"/><img src="assets/footer.svg?v=48f43390" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
 <!-- section:footer:end -->
