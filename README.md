@@ -4,7 +4,7 @@
   <a href="https://liam.plus"><img src="assets/avatar.svg?v=12a5fce4" width="150" alt="Liam+ — animated lightning block"/></a>
 </p>
 
-<a href="https://liam.plus"><img src="assets/hero.svg?v=0323a6c8" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder"/></a>
+<a href="https://liam.plus"><img src="assets/hero.svg?v=d908e5f6" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder"/></a>
 
 <p align="center">
   <a href="https://liam.plus"><img src="https://img.shields.io/badge/liam.plus-enter_LiamOS-22ff88?style=for-the-badge&labelColor=050807" alt="liam.plus"/></a>
