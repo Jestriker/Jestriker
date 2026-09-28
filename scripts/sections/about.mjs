@@ -79,10 +79,10 @@ export function render(ctx) {
     ${lib.crtOverlay(C, 'ab', W, H)}
   </g>
   ${border(C, W, H)}`;
-  return { 'about.svg': lib.svg(W, H, body, 'whoami — Liam Abu: builds tools, ships them, then tries to break them'), 'h-about.svg': lib.header(C, ctx.no('about'), 'WHOAMI') };
+  return { 'about.svg': lib.svg(W, H, body, 'whoami — Liam Abu: builds tools, ships them, then tries to break them'), 'h-about.svg': lib.header(C, ctx.no('about'), 'HELLOWORLD') };
 }
 
 export function readme(ctx) {
-  return `<p align="center">${ctx.pic('h-about.svg', 'width="100%" alt="WHOAMI"')}</p>
+  return `<p align="center">${ctx.pic('h-about.svg', 'width="100%" alt="HELLOWORLD"')}</p>
 <p align="center">${ctx.pic('about.svg', 'width="100%" alt="whoami: Liam Abu. Builds tools, ships them, then tries to break them. Networks, security, game servers, pixels. Based in Israel, home at liam.plus."')}</p>`;
 }

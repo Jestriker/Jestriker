@@ -82,4 +82,24 @@ if (existsSync(readme)) {
   }
   writeFileSync(readme, md);
 }
+// Backup: mirror every external image the README still references (e.g. the live visitor counter)
+// into backup/external/, so a copy of everything the profile shows lives in this repo.
+if (existsSync(readme)) {
+  const md = readFileSync(readme, 'utf8');
+  const urls = [...new Set([...md.matchAll(/(?:src|srcset)="(https?:\/\/[^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, '&')))];
+  const dir = join(ROOT, 'backup', 'external');
+  mkdirSync(dir, { recursive: true });
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { headers: { 'User-Agent': 'profile-builder' } });
+      if (!res.ok) throw new Error(String(res.status));
+      const type = res.headers.get('content-type') ?? '';
+      const ext = type.includes('svg') ? 'svg' : type.includes('png') ? 'png' : type.includes('gif') ? 'gif' : 'bin';
+      const name = url.replace(/^https?:\/\//, '').replace(/[^a-z0-9]+/gi, '-').slice(0, 90);
+      writeFileSync(join(dir, `${name}.${ext}`), Buffer.from(await res.arrayBuffer()));
+    } catch (e) {
+      console.warn(`  ! backup ${url}: ${e.message}`);
+    }
+  }
+}
 console.log(`built ${Object.keys(files).length} svgs from ${sections.length} sections · ${tools.length} projects · ${github.releases} releases`);

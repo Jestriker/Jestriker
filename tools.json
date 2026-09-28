@@ -9,7 +9,7 @@
     "since": "2019-11-01"
   },
   "layout": ["about", "now", "projects", "liamos", "activity", "stats", "shiplog", "security", "stack", "contact", "guestbook"],
-  "stack": ["ts", "react", "nextjs", "tailwind", "threejs", "nodejs", "python", "cloudflare", "arduino", "lua"],
+  "stack": ["js", "ts", "py", "java", "c", "cs", "bash", "powershell", "html", "css", "mysql", "react", "nextjs", "tailwind", "nodejs", "express", "electron", "tauri", "discordjs", "gradle", "maven", "idea", "linux", "kali", "ubuntu", "debian", "nginx", "docker", "wireshark", "arduino", "cloudflare", "workers", "vercel", "supabase", "firebase", "mongodb", "redis", "git", "github", "githubactions", "vscode", "visualstudio", "figma", "blender", "ps", "pr", "ae", "npm", "pnpm", "notion"],
   "tools": [
     {
       "name": "JustPlugin",
