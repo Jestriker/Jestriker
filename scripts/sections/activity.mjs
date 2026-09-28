@@ -232,7 +232,7 @@ export function render(ctx) {
     ['LONGEST STREAK', String(S.longest), S.longest === 1 ? 'DAY' : 'DAYS'],
     ['BUSIEST DAY', String(S.busiest?.n ?? 0), busy],
   ];
-  const sx = 800, sy = 250, sw = 128;
+  const sx = 800, sy = 168, sw = 128;
   const statBlock = stats.map(([label, value, unit], k) => {
     const x = sx + k * sw;
     return `<g class="in" style="animation-delay:${(2.2 + k * 0.15).toFixed(2)}s">
@@ -259,12 +259,12 @@ export function render(ctx) {
 
   // Legend: less → more, as tiny voxels.
   const legend = `<g class="in" style="animation-delay:2.6s">
-    <text x="${sx}" y="${H - 22}" font-family="${ctx.MONO}" font-size="11" letter-spacing="1.5" fill="${C.muted}">LESS</text>
+    <text x="${sx}" y="${sy + 122}" font-family="${ctx.MONO}" font-size="11" letter-spacing="1.5" fill="${C.muted}">LESS</text>
     ${[0, 1, 2, 3, 4].map((L, k) => {
-      const x = sx + 50 + k * 20, y = H - 20, h = [2, 5, 8, 11, 14][k];
+      const x = sx + 50 + k * 20, y = sy + 124, h = [2, 5, 8, 11, 14][k];
       return `<path class="l${L}" d="M${x} ${y}l-8 -4v${-h}l8 4z"/><path class="f${L}" d="M${x} ${y}l12 -3v${-h}l-12 3z"/><path class="t${L}" d="M${x} ${y - h}l12 -3l-8 -4l-12 3z"/>`;
     }).join('')}
-    <text x="${sx + 50 + 5 * 20 - 2}" y="${H - 22}" font-family="${ctx.MONO}" font-size="11" letter-spacing="1.5" fill="${C.muted}">MORE</text></g>`;
+    <text x="${sx + 50 + 5 * 20 - 2}" y="${sy + 122}" font-family="${ctx.MONO}" font-size="11" letter-spacing="1.5" fill="${C.muted}">MORE</text></g>`;
 
   // Timings.
   const riseAt = 0.3, perWeek = 0.06;
@@ -323,7 +323,6 @@ export function render(ctx) {
     ${beam}
     ${walkers}
     </g>
-    ${strip}
     ${statBlock}
     ${legend}
     ${lib.crtOverlay(C, id, W, H)}
@@ -332,7 +331,7 @@ export function render(ctx) {
 
   const label = S.empty
     ? 'Commit activity over the last 6 months'
-    : `${S.total} commits in the last 6 months (${Y.total} in the full year) · ${S.active} active days · longest streak ${S.longest} days · busiest day ${S.busiest?.n ?? 0} commits`;
+    : `${S.total} commits in the last 6 months · ${S.active} active days · longest streak ${S.longest} days · busiest day ${S.busiest?.n ?? 0} commits`;
   return {
     'activity.svg': lib.svg(W, H, body, label),
     'h-activity.svg': lib.header(C, ctx.no('activity'), 'ACTIVITY', C.green),
@@ -341,8 +340,7 @@ export function render(ctx) {
 
 export function readme(ctx) {
   const S = summarize(ctx.data?.activity, ctx.now ?? new Date(), 26);
-  const Y = summarize(ctx.data?.activity, ctx.now ?? new Date(), 53);
   const alt = S.empty ? 'Commit activity over the last 6 months'
-    : `${S.total} commits in the last 6 months across ${S.active} active days (${Y.total} in the full year), rendered as a 3D pixel-art city`;
+    : `${S.total} commits in the last 6 months across ${S.active} active days, rendered as a 3D pixel-art city`;
   return `${ctx.pic('h-activity.svg', 'width="100%" alt="Activity"')}\n\n<p align="center">${ctx.pic('activity.svg', `width="100%" alt="${alt}"`)}</p>`;
 }
