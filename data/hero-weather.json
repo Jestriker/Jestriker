@@ -1,8 +1,8 @@
 {
- "time": "2026-09-30T12:30",
+ "time": "2026-09-30T15:45",
  "interval": 900,
- "temperature_2m": 27.2,
- "weather_code": 3,
+ "temperature_2m": 27.4,
+ "weather_code": 2,
  "is_day": 1,
- "wind_speed_10m": 12.1
+ "wind_speed_10m": 12.5
 }
