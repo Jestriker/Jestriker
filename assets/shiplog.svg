@@ -19,7 +19,7 @@
     <text x="66" y="48" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="15" font-weight="400" fill="#22ff88" clip-path="url(#tlog)" xml:space="preserve">tail -f ~/.shiplog   # auto-updated every 3h by GitHub Actions</text>
     <line x1="48" y1="66" x2="1152" y2="66" stroke="#16241c"/>
     <g class="fade" style="animation-delay:1.30s">
-      <text x="48" y="104" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#6b8577">2026-10-09</text>
+      <text x="48" y="104" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#6b8577">2026-10-10</text>
       <text x="170" y="104" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#38bdf8">◆ push    </text>
       <text x="300" y="104" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#d7e4dc">JustCode-releases</text>
       <text x="1152" y="104" text-anchor="end" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="13" fill="#1a7a4a">today</text></g><g class="fade" style="animation-delay:1.48s">
