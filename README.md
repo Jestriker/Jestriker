@@ -2,7 +2,7 @@
      Edit tools.json or scripts/sections/*, not the blocks below. -->
 
 <!-- section:hero:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=3a14a72e"/><img src="assets/hero.svg?v=6533a471" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=f0270831"/><img src="assets/hero.svg?v=ded49433" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
 <!-- section:hero:end -->
 
 <!-- section:badges:start -->
@@ -66,7 +66,7 @@
 <!-- section:activity:start -->
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/h-activity-light.svg?v=1ccfe267"/><img src="assets/h-activity.svg?v=f9d83384" width="100%" alt="Activity"/></picture>
 
-<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=0e04b424"/><img src="assets/activity.svg?v=1aba1bf5" width="100%" alt="2780 commits in the last 6 months across 83 active days, rendered as a 3D pixel-art city"/></picture></p>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=bcaf2df1"/><img src="assets/activity.svg?v=187986c0" width="100%" alt="2849 commits in the last 6 months across 84 active days, rendered as a 3D pixel-art city"/></picture></p>
 <!-- section:activity:end -->
 
 <br/>
@@ -82,7 +82,7 @@
 <!-- section:shiplog:start -->
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/h-shiplog-light.svg?v=d421fcbc"/><img src="assets/h-shiplog.svg?v=0e7d71f6" width="100%" alt="07 // Ship log"/></picture>
 
-<picture><source media="(prefers-color-scheme: light)" srcset="assets/shiplog-light.svg?v=954bc094"/><img src="assets/shiplog.svg?v=33522812" width="100%" alt="Ship log — latest releases and pushes"/></picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/shiplog-light.svg?v=0583b209"/><img src="assets/shiplog.svg?v=9ee02ef9" width="100%" alt="Ship log — latest releases and pushes"/></picture>
 <!-- section:shiplog:end -->
 
 <br/>
@@ -118,5 +118,5 @@
 <!-- section:visitors:end -->
 
 <!-- section:footer:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=95c71beb"/><img src="assets/footer.svg?v=0f0bd29f" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=fba82091"/><img src="assets/footer.svg?v=7fccba2c" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
 <!-- section:footer:end -->
