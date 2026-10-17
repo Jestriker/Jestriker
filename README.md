@@ -2,7 +2,7 @@
      Edit tools.json or scripts/sections/*, not the blocks below. -->
 
 <!-- section:hero:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=8128c71c"/><img src="assets/hero.svg?v=3d8322a2" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=66db662b"/><img src="assets/hero.svg?v=c3115efb" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
 <!-- section:hero:end -->
 
 <!-- section:badges:start -->
@@ -74,7 +74,7 @@
 <!-- section:stats:start -->
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/h-stats-light.svg?v=1fb7e944"/><img src="assets/h-stats.svg?v=145a13d3" width="100%" alt="06 // By the numbers"/></picture>
 
-<picture><source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=c9f0455b"/><img src="assets/stats.svg?v=0ad10ee9" width="100%" alt="8 projects · 13 releases · 22 downloads · 6 years on GitHub"/></picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=0b13e78f"/><img src="assets/stats.svg?v=e91970a6" width="100%" alt="8 projects · 13 releases · 23 downloads · 6 years on GitHub"/></picture>
 <!-- section:stats:end -->
 
 <br/>
@@ -118,5 +118,5 @@
 <!-- section:visitors:end -->
 
 <!-- section:footer:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=0e1f90b9"/><img src="assets/footer.svg?v=e3ceacbf" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=5ce4fc67"/><img src="assets/footer.svg?v=6ba47327" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
 <!-- section:footer:end -->
