@@ -2,7 +2,7 @@
      Edit tools.json or scripts/sections/*, not the blocks below. -->
 
 <!-- section:hero:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=2082026e"/><img src="assets/hero.svg?v=3c79d60f" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=1050e5d4"/><img src="assets/hero.svg?v=705fdad5" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
 <!-- section:hero:end -->
 
 <!-- section:badges:start -->
@@ -36,7 +36,7 @@
 <p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="assets/h-projects-light.svg?v=bfec8341"/><img src="assets/h-projects.svg?v=9440d1a9" width="100%" alt="03 // PROJECTS I'VE WORKED ON"/></picture></p>
 <p align="center">
   <a href="https://justplugin.liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/tools/justplugin-light.svg?v=e81db5aa"/><img src="assets/tools/justplugin.svg?v=fe61a56f" width="49%" alt="JustPlugin — The only essentials plugin you will ever need: 200+ commands, economy, teleports and moderation in one JAR. Native Folia."/></picture></a>
-  <a href="https://github.com/Jestriker/justmic-releases/releases/latest"><picture><source media="(prefers-color-scheme: light)" srcset="assets/tools/justmic-light.svg?v=d5a5c7c5"/><img src="assets/tools/justmic.svg?v=f6e3dfba" width="49%" alt="JustMic — Virtual microphone with a studio chain, soundboard and voice changer."/></picture></a>
+  <a href="https://github.com/Jestriker/justmic-releases/releases/latest"><picture><source media="(prefers-color-scheme: light)" srcset="assets/tools/justmic-light.svg?v=ebcb6fe0"/><img src="assets/tools/justmic.svg?v=e1c8901f" width="49%" alt="JustMic — Virtual microphone with a studio chain, soundboard and voice changer."/></picture></a>
 </p>
 <p align="center">
   <a href="https://github.com/Jestriker/parpar-executor-releases/releases/latest"><picture><source media="(prefers-color-scheme: light)" srcset="assets/tools/parpar-executor-light.svg?v=7c009432"/><img src="assets/tools/parpar-executor.svg?v=e66b3997" width="49%" alt="Parpar Executor — Mission control for game servers."/></picture></a>
@@ -66,7 +66,7 @@
 <!-- section:activity:start -->
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/h-activity-light.svg?v=1ccfe267"/><img src="assets/h-activity.svg?v=f9d83384" width="100%" alt="Activity"/></picture>
 
-<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=0bbf2233"/><img src="assets/activity.svg?v=e31a8f83" width="100%" alt="3055 commits in the last 6 months across 83 active days, rendered as a 3D pixel-art city"/></picture></p>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=7aa976d6"/><img src="assets/activity.svg?v=08f05f2a" width="100%" alt="3056 commits in the last 6 months across 83 active days, rendered as a 3D pixel-art city"/></picture></p>
 <!-- section:activity:end -->
 
 <br/>
@@ -82,7 +82,7 @@
 <!-- section:shiplog:start -->
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/h-shiplog-light.svg?v=d421fcbc"/><img src="assets/h-shiplog.svg?v=0e7d71f6" width="100%" alt="07 // Ship log"/></picture>
 
-<picture><source media="(prefers-color-scheme: light)" srcset="assets/shiplog-light.svg?v=7a1c4359"/><img src="assets/shiplog.svg?v=fcc79d6d" width="100%" alt="Ship log — latest releases and pushes"/></picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/shiplog-light.svg?v=e98f09e4"/><img src="assets/shiplog.svg?v=ca12e02a" width="100%" alt="Ship log — latest releases and pushes"/></picture>
 <!-- section:shiplog:end -->
 
 <br/>
@@ -118,5 +118,5 @@
 <!-- section:visitors:end -->
 
 <!-- section:footer:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=2d7c4401"/><img src="assets/footer.svg?v=ad875baa" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=67515cc7"/><img src="assets/footer.svg?v=96acfc16" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
 <!-- section:footer:end -->
