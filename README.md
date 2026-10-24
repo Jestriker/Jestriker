@@ -2,7 +2,7 @@
      Edit tools.json or scripts/sections/*, not the blocks below. -->
 
 <!-- section:hero:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=3ac2de0a"/><img src="assets/hero.svg?v=e94e9f8f" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=03c5b868"/><img src="assets/hero.svg?v=8b5a0f85" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
 <!-- section:hero:end -->
 
 <!-- section:badges:start -->
@@ -82,7 +82,7 @@
 <!-- section:shiplog:start -->
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/h-shiplog-light.svg?v=d421fcbc"/><img src="assets/h-shiplog.svg?v=0e7d71f6" width="100%" alt="07 // Ship log"/></picture>
 
-<picture><source media="(prefers-color-scheme: light)" srcset="assets/shiplog-light.svg?v=a6d98540"/><img src="assets/shiplog.svg?v=683b4971" width="100%" alt="Ship log — latest releases and pushes"/></picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/shiplog-light.svg?v=d9abbcde"/><img src="assets/shiplog.svg?v=70633170" width="100%" alt="Ship log — latest releases and pushes"/></picture>
 <!-- section:shiplog:end -->
 
 <br/>
@@ -118,5 +118,5 @@
 <!-- section:visitors:end -->
 
 <!-- section:footer:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=16e62d12"/><img src="assets/footer.svg?v=e20f6a33" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=07d1120a"/><img src="assets/footer.svg?v=93ed644e" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
 <!-- section:footer:end -->
