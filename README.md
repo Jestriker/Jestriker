@@ -2,7 +2,7 @@
      Edit tools.json or scripts/sections/*, not the blocks below. -->
 
 <!-- section:hero:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=5b99b793"/><img src="assets/hero.svg?v=b3336e7b" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=284e0091"/><img src="assets/hero.svg?v=8c274b85" width="100%" alt="LiamOS boot screen — Liam Abu, Cyber Security · Networking · Tool Builder. Press start to visit liam.plus"/></picture></a>
 <!-- section:hero:end -->
 
 <!-- section:badges:start -->
@@ -118,5 +118,5 @@
 <!-- section:visitors:end -->
 
 <!-- section:footer:start -->
-<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=0206b27b"/><img src="assets/footer.svg?v=eb761228" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
+<a href="https://liam.plus"><picture><source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg?v=3bbf9987"/><img src="assets/footer.svg?v=dd1fbf32" width="100%" alt="Liam vs. Zombies — thanks for visiting"/></picture></a>
 <!-- section:footer:end -->

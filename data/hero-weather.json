@@ -1,8 +1,8 @@
 {
- "time": "2026-10-29T12:00",
+ "time": "2026-10-29T20:15",
  "interval": 900,
- "temperature_2m": 26.8,
- "weather_code": 0,
- "is_day": 1,
- "wind_speed_10m": 20
+ "temperature_2m": 22.7,
+ "weather_code": 2,
+ "is_day": 0,
+ "wind_speed_10m": 6.6
 }
