@@ -25,7 +25,7 @@
     .flick{animation:flick 6s infinite}
     @keyframes flick{0%,96%,100%{opacity:1}97%{opacity:.85}98%{opacity:1}99%{opacity:.9}}
     .drift{animation:drift 60s linear infinite}@keyframes drift{from{transform:translateX(0)}to{transform:translateX(1360px)}}
-    .rn{opacity:0.4;animation:rn .7s linear infinite}@keyframes rn{from{transform:translate(0,0)}to{transform:translate(-18px,480px)}}
+    .rn{opacity:0.4;animation:rn .7s linear infinite}@keyframes rn{from{transform:translate(0,0)}to{transform:translate(-20px,480px)}}
     .flash{opacity:0;animation:flash 7s linear 2.5s infinite}
       @keyframes flash{0%,88%,90.5%,92%,94%,100%{opacity:0}89%{opacity:0.14}91%{opacity:0.08}93%{opacity:0.05}}
       .bolt{opacity:0;animation:bolt 7s steps(1) 2.5s infinite}@keyframes bolt{0%{opacity:0}88%{opacity:1}92%{opacity:0}}
@@ -168,7 +168,7 @@
     <circle cx="46" cy="40" r="6" fill="#ff5f57"/><circle cx="66" cy="40" r="6" fill="#febc2e"/><circle cx="86" cy="40" r="6" fill="#28c840"/>
     <text x="108" y="45" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="13" fill="#5f7368">liam@liamos: ~/profile</text>
     <text x="600" y="45" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="12" fill="#5a9e7a">uptime 7y · 8 projects online</text>
-    <rect x="802" y="33" width="6" height="2" fill="#5f7368"/><rect x="800" y="35" width="10" height="2" fill="#5f7368"/><rect x="798" y="37" width="14" height="2" fill="#5f7368"/><rect x="804" y="39" width="2" height="2" fill="#b7791f"/><rect x="802" y="41" width="4" height="2" fill="#b7791f"/><rect x="804" y="43" width="2" height="2" fill="#b7791f"/><rect x="802" y="45" width="2" height="2" fill="#b7791f"/><text x="818" y="45" textLength="338.4" lengthAdjust="spacing" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="12" fill="#5a9e7a" xml:space="preserve"><tspan fill="#1f2a24">19°C TLV</tspan>  ·  synced <tspan fill="#0f9d58">18:46</tspan> IL · <tspan fill="#5f7368">fighting zombies</tspan></text>
+    <rect x="766" y="33" width="6" height="2" fill="#5f7368"/><rect x="764" y="35" width="10" height="2" fill="#5f7368"/><rect x="762" y="37" width="14" height="2" fill="#5f7368"/><rect x="768" y="39" width="2" height="2" fill="#b7791f"/><rect x="766" y="41" width="4" height="2" fill="#b7791f"/><rect x="768" y="43" width="2" height="2" fill="#b7791f"/><rect x="766" y="45" width="2" height="2" fill="#b7791f"/><text x="782" y="45" textLength="374.4" lengthAdjust="spacing" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="12" fill="#5a9e7a" xml:space="preserve"><tspan fill="#1f2a24">19°C TLV</tspan>  ·  synced <tspan fill="#0f9d58">01:09</tspan> IL · <tspan fill="#5f7368">probably still coding</tspan></text>
     <g class="fade" style="animation-delay:0.30s">
         <text x="60" y="112" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#5f7368">[<tspan fill="#0f9d58"> OK </tspan>]</text>
         <text x="122" y="112" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#1f2a24">Booting LiamOS kernel 6.9-plus</text></g><g class="fade" style="animation-delay:0.52s">
