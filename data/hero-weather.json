@@ -1,8 +1,8 @@
 {
- "time": "2026-11-12T13:00",
+ "time": "2026-11-12T21:45",
  "interval": 900,
- "temperature_2m": 24.4,
+ "temperature_2m": 17.1,
  "weather_code": 0,
- "is_day": 1,
- "wind_speed_10m": 9.9
+ "is_day": 0,
+ "wind_speed_10m": 3.5
 }
