@@ -50,7 +50,7 @@
       <text x="48" y="300" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#5f7368">2026-07-28</text>
       <text x="170" y="300" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#0f9d58" font-weight="600">▲ release </text>
       <text x="300" y="300" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="14" fill="#1f2a24">Parpar Executor v0.1.0</text>
-      <text x="1152" y="300" text-anchor="end" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="13" fill="#5a9e7a">3mo ago</text></g>
+      <text x="1152" y="300" text-anchor="end" font-family="ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace" font-size="13" fill="#5a9e7a">4mo ago</text></g>
     
   <rect width="1200" height="334" fill="url(#scans)" pointer-events="none"/>
   <rect y="-120" width="1200" height="120" fill="url(#bands)"><animate attributeName="y" values="-120;334" dur="7s" repeatCount="indefinite"/></rect>
